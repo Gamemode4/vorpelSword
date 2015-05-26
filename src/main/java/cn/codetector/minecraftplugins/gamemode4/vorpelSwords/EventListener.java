@@ -1,14 +1,12 @@
 package cn.codetector.minecraftplugins.gamemode4.vorpelSwords;
 
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -16,11 +14,11 @@ import org.bukkit.inventory.ItemStack;
 
 public class EventListener implements Listener {
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
         EntityDamageEvent.DamageCause cause = event.getEntity().getLastDamageCause().getCause();
-        if (event.getEntity().getKiller() instanceof Player){
-            Player p = (Player)event.getEntity().getKiller();
+        if (event.getEntity().getKiller() != null){
+            Player p = event.getEntity().getKiller();
             ItemStack hand = p.getItemInHand();
             if (hand != null && hand.getEnchantments().containsKey(Enchantment.LOOT_BONUS_MOBS) && hand.getEnchantments().get(Enchantment.LOOT_BONUS_MOBS).equals(3) && hand.getItemMeta().getDisplayName()!=null && hand.getItemMeta().getDisplayName().replaceAll(" ","").equalsIgnoreCase("vorpelsword")) {
                 EntityType t = event.getEntity().getType();
