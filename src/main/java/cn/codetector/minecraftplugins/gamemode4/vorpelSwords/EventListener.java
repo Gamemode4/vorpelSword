@@ -22,7 +22,7 @@ public class EventListener implements Listener {
         if (event.getEntity().getKiller() instanceof Player){
             Player p = (Player)event.getEntity().getKiller();
             ItemStack hand = p.getItemInHand();
-            if (hand != null && hand.getEnchantments().containsKey(Enchantment.LOOT_BONUS_MOBS) && hand.getEnchantments().get(Enchantment.LOOT_BONUS_MOBS).equals(3) && hand.getItemMeta().getDisplayName()!=null && hand.getItemMeta().getDisplayName().replaceAll(" ","").equalsIgnoreCase("vorpelsowrd")) {
+            if (hand != null && hand.getEnchantments().containsKey(Enchantment.LOOT_BONUS_MOBS) && hand.getEnchantments().get(Enchantment.LOOT_BONUS_MOBS).equals(3) && hand.getItemMeta().getDisplayName()!=null && hand.getItemMeta().getDisplayName().replaceAll(" ","").equalsIgnoreCase("vorpelsword")) {
                 EntityType t = event.getEntity().getType();
                 if (cause == EntityDamageEvent.DamageCause.ENTITY_ATTACK && event.getEntity().getKiller() != null) {
                     Location loc = event.getEntity().getLocation();
